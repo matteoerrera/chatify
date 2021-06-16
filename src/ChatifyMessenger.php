@@ -145,7 +145,7 @@ class ChatifyMessenger
      */
     public function messageCard($data, $viewType = null){
         $data['viewType'] = ($viewType) ? $viewType : $data['viewType'];
-        return view('Chatify::layouts.messageCard',$data)->render();
+        return view('layouts_chat.messageCard',$data)->render();
     }
 
     /**
