@@ -340,7 +340,9 @@ class MessagesController extends Controller
     {
         $getRecords = null;
         $input = trim(filter_var($request['input'], FILTER_SANITIZE_STRING));
-        $records = User::where('name', 'LIKE', "%{$input}%");
+        $records =   $records =$records = DB::table('users')
+            ->where(DB::raw("CONCAT(users.name,' ',users.surname)"), 'like', "%{$input}%")
+            ->orWhere(DB::raw("CONCAT(users.surname,' ',users.name)"), 'like', "%{$input}%") ;
         foreach ($records->get() as $record) {
             $getRecords .= view('Chatify::layouts.listItem', [
                 'get' => 'search_item',
