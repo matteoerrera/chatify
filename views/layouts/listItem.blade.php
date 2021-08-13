@@ -1,3 +1,5 @@
+@php
+@endphp
 {{-- -------------------- Saved Messages -------------------- --}}
 @if($get == 'saved')
     <table class="messenger-list-item m-li-divider @if('user_'.Auth::user()->id == $id && $id != "0") m-list-active @endif">
@@ -33,7 +35,7 @@
         {{-- center side --}}
         <td>
         <p data-id="{{ $type.'_'.$user->id }}">
-            {{ strlen($user->name) > 12 ? trim(substr($user->name,0,12)).'..' : $user->name }} 
+            {{ strlen($name) > 12 ? trim(substr($name,0,12)).'..' : $name }}
             <span>{{ $lastMessage->created_at->diffForHumans() }}</span></p>
         <span>
             {{-- Last Message user indicator --}}
@@ -74,7 +76,7 @@
         {{-- center side --}}
         <td>
         <p data-id="{{ $type.'_'.$user->id }}">
-            {{ strlen($user->name) > 12 ? trim(substr($user->name,0,12)).'..' : $user->name }} 
+            {{ strlen($name) > 12 ? trim(substr($name,0,12)).'..' : $name }}
         </td>
         
     </tr>
