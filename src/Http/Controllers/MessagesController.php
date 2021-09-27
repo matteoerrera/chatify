@@ -11,6 +11,8 @@ use Chatify\Facades\ChatifyMessenger as Chatify;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+
 
 
 class MessagesController extends Controller
@@ -340,7 +342,7 @@ class MessagesController extends Controller
     {
         $getRecords = null;
         $input = trim(filter_var($request['input'], FILTER_SANITIZE_STRING));
-        $records =   $records =$records = DB::table('users')
+        $records = DB::table('users')
             ->where(DB::raw("CONCAT(users.name,' ',users.surname)"), 'like', "%{$input}%")
             ->orWhere(DB::raw("CONCAT(users.surname,' ',users.name)"), 'like', "%{$input}%") ;        
         foreach ($records->get() as $record) {
