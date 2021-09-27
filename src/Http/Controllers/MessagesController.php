@@ -149,7 +149,7 @@ class MessagesController extends Controller
                 'type' => $request['type'],
                 'from_id' => Auth::user()->id,
                 'to_id' => $request['id'],
-                'body' => trim(htmlentities($request['message'])),
+                'body' => htmlentities(trim($request['message']), ENT_QUOTES, 'UTF-8'),
                 'attachment' => ($attachment) ? $attachment . ',' . $attachment_title : null,
             ]);
 
